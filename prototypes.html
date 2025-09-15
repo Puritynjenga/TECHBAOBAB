@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBaobab - Small Samsung Mobile Prototypes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .presentation-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .presentation-title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .presentation-title p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .prototypes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Samsung Phone Frame - Smaller */
+        .samsung-frame {
+            position: relative;
+            width: 280px;
+            height: 580px;
+            background: #1a1a1a;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 
+                0 0 0 2px #333,
+                0 20px 40px rgba(0,0,0,0.3),
+                0 40px 80px rgba(0,0,0,0.2);
+        }
+
+        .samsung-frame::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -2px;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 35px;
+            background: #333;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .samsung-frame::after {
+            content: 'SAMSUNG';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8px;
+            color: #999;
+            letter-spacing: 1.5px;
+            font-weight: 300;
+        }
+
+        .screen-container {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 22px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            background: white;
+            padding: 4px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            height: 22px;
+        }
+
+        .status-left {
+            display: flex;
+            gap: 5px;
+            font-weight: 500;
+        }
+
+        .status-right {
+            display: flex;
+            gap: 5px;
+        }
+
+        .app-screen {
+            height: calc(100% - 22px);
+            background: white;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .screen-label {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Screen 1: Splash */
+        .splash-screen {
+            background: linear-gradient(135deg, #00563B, #003d2a);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .splash-logo {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .splash-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .splash-tagline {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Screen 2: Home */
+        .home-header {
+            background: linear-gradient(135deg, #00563B, #003d2a);
+            padding: 15px;
+            color: white;
+        }
+
+        .welcome-text {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .welcome-sub {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .action-btn.primary {
+            background: #FFD700;
+            color: #00563B;
+        }
+
+        .action-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .progress-card {
+            margin: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .progress-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 35%;
+            background: linear-gradient(90deg, #00563B, #FFD700);
+        }
+
+        .paths-section {
+            padding: 0 15px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .see-all {
+            color: #00563B;
+            font-size: 12px;
+        }
+
+        .path-cards {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .path-card {
+            min-width: 100px;
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .path-icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .path-name {
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .path-duration {
+            font-size: 9px;
+            color: #666;
+        }
+
+        /* Screen 3: Quiz */
+        .quiz-container {
+            padding: 15px;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .quiz-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #00563B;
+            margin-bottom: 4px;
+        }
+
+        .quiz-subtitle {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .quiz-progress {
+            height: 5px;
+            background: #f0f0f0;
+            border-radius: 2.5px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            width: 40%;
+            background: #00563B;
+            border-radius: 2.5px;
+        }
+
+        .question {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px;
+            background: #f8f8f8;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            border-color: #00563B;
+            background: #f0f8f0;
+        }
+
+        /* Screen 4: Results */
+        .results-container {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .result-emoji {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .result-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00563B;
+            margin-bottom: 8px;
+        }
+
+        .result-path {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .resources-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .resource-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            align-items: center;
+        }
+
+        .resource-icon {
+            font-size: 20px;
+        }
+
+        .resource-info {
+            flex: 1;
+        }
+
+        .resource-name {
+            font-weight: 600;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .resource-desc {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: 8px;
+            margin-top: 3px;
+            font-size: 9px;
+            color: #999;
+        }
+
+        .start-btn {
+            background: #00563B;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: none;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Screen 5: Paths Grid */
+        .paths-grid-container {
+            padding: 15px;
+        }
+
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .path-grid-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .path-grid-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .path-grid-name {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .path-grid-info {
+            font-size: 9px;
+            color: #666;
+        }
+
+        /* Screen 6: Resources */
+        .resources-header {
+            padding: 15px;
+            background: #f8f8f8;
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .chip {
+            padding: 4px 10px;
+            background: white;
+            border-radius: 12px;
+            font-size: 10px;
+            white-space: nowrap;
+            border: 1px solid #ddd;
+        }
+
+        .chip.active {
+            background: #00563B;
+            color: white;
+            border-color: #00563B;
+        }
+
+        .resources-content {
+            padding: 15px;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            font-size: 9px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            color: #00563B;
+        }
+
+        .nav-icon {
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .prototypes-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-title">
+        <h1>TechBaobab Mobile App Prototypes</h1>
+        <p>Small Samsung Device Mockups for Hackathon Presentation</p>
+    </div>
+
+    <div class="prototypes-container">
+        <!-- Screen 1: Splash Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="samsung-frame">
+                    <div class="screen-container">
+                        <div class="status-bar">
+                            <div class="status-left">9:41</div>
+                            <div class="status-right">📶 📶 🔋</div>
+                        </div>
+                        <div class="app-screen">
+                            <div class="splash-screen">
+                                <div class="splash-logo">🌳</div>
+                                <div class="splash-title">TechBaobab</div>
+                                <div class="splash-tagline">Your Tech Journey Starts Here</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-label">1. Splash Screen</div>
+        </div>
+
+        <!-- Screen 2: Home Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="samsung-frame">
+                    <div class="screen-container">
+                        <div class="status-bar">
+                            <div class="status-left">9:41</div>
+                            <div class="status-right">📶 📶 🔋</div>
+                        </div>
+                        <div class="app-screen">
+                            <div class="home-header">
+                                <div class="welcome-text">Hello, Grace! 👋</div>
+                                <div class="welcome-sub">Ready to continue learning?</div>
+                                <div class="quick-actions">
+                                    <button class="action-btn primary">🎯 Take Quiz</button>
+                                    <button class="action-btn secondary">📚 My Path</button>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-card">
+                                <div class="progress-title">Web Development Path</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px;">
+                                    <span>35% Complete</span>
+                                    <span>12 Day Streak 🔥</span>
+                                </div>
+                            </div>
+
+                            <div class="paths-section">
+                                <div class="section-header">
+                                    <span class="section-title">Popular Paths</span>
+                                    <span class="see-all">See all →</span>
+                                </div>
+                                <div class="path-cards">
+                                    <div class="path-card">
+                                        <div class="path-icon">🌐</div>
+                                        <div class="path-name">Web Dev</div>
+                                        <div class="path-duration">6 months</div>
+                                    </div>
+                                    <div class="path-card">
+                                        <div class="path-icon">🎨</div>
+                                        <div class="path-name">UI/UX</div>
+                                        <div class="path-duration">4 months</div>
+                                    </div>
+                                    <div class="path-card">
+                                        <div class="path-icon">🤖</div>
+                                        <div class="path-name">AI/ML</div>
+                                        <div class="path-duration">8 months</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bottom-nav">
+                                <div class="nav-item active">
+                                    <span class="nav-icon">🏠</span>
+                                    <span>Home</span>
+                                </div>
+                                <div class="nav-item">
+                                    <span class="nav-icon">🗺️</span>
+                                    <span>Paths</span>
+                                </div>
+                                <div class="nav-item">
+                                    <span class="nav-icon">📚</span>
+                                    <span>Resources</span>
+                                </div>
+                                <div class="nav-item">
+                                    <span class="nav-icon">👤</span>
+                                    <span>Profile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-label">2. Home Dashboard</div>
+        </div>
+
+        <!-- Screen 3: Quiz Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="samsung-frame">
+                    <div class="screen-container">
+                        <div class="status-bar">
+                            <div class="status-left">9:42</div>
+                            <div class="status-right">📶 📶 🔋</div>
+                        </div>
+                        <div class="app-screen">
+                            <div class="quiz-container">
+                                <div class="quiz-header">
+                                    <div class="quiz-title">Find Your Path</div>
+                                    <div class="quiz-subtitle">Question 2 of 5</div>
+                                </div>
+                                
+                                <div class="quiz-progress">
+                                    <div class="quiz-progress-fill"></div>
+                                </div>
+
+                                <div class="question">
+                                    What excites you most about technology?
+                                </div>
+
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        🎨 Creating beautiful visual designs
+                                    </div>
+                                    <div class="quiz-option">
+                                        💻 Building functional websites
+                                    </div>
+                                    <div class="quiz-option">
+                                        📊 Analyzing data patterns
+                                    </div>
+                                    <div class="quiz-option">
+                                        🤖 Building intelligent systems
+                                    </div>
+                                    <div class="quiz-option">
+                                        📱 Creating mobile apps
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-label">3. Career Quiz</div>
+        </div>
+
+        <!-- Screen 4: Quiz Results with Resources -->
+        <div>
+            <div class="phone-mockup">
+                <div class="samsung-frame">
+                    <div class="screen-container">
+                        <div class="status-bar">
+                            <div class="status-left">9:43</div>
+                            <div class="status-right">📶 📶 🔋</div>
+                        </div>
+                        <div class="app-screen">
+                            <div class="results-container">
+                                <div class="result-emoji">🎉</div>
+                                <div class="result-title">Perfect Match!</div>
+                                <div class="result-path">Web Development</div>
+                                
+                                <div class="resources-list">
+                                    <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px;">Start Learning Today:</div>
+                                    
+                                    <div class="resource-item">
+                                        <div class="resource-icon">🌐</div>
+                                        <div class="resource-info">
+                                            <div class="resource-name">W3Schools</div>
+                                            <div class="resource-desc">Interactive tutorials</div>
+                                            <div class="resource-meta">
+                                                <span>Free</span>
+                                                <span>•</span>
+                                                <span>Low Data</span>
+                                            </div>
+                                        </div>
+                                        <button class="start-btn">Start →</button>
+                                    </div>
+
+                                    <div class="resource-item">
+                                        <div class="resource-icon">🔥</div>
+                                        <div class="resource-info">
+                                            <div class="resource-name">freeCodeCamp</div>
+                                            <div class="resource-desc">Complete curriculum</div>
+                                            <div class="resource-meta">
+                                                <span>Free</span>
+                                                <span>•</span>
+                                                <span>Certificate</span>
+                                            </div>
+                                        </div>
+                                        <button class="start-btn">Start →</button>
+                                    </div>
+
+                                    <div class="resource-item">
+                                        <div class="resource-icon">🔷</div>
+                                        <div class="resource-info">
+                                            <div class="resource-name">Microsoft Learn</div>
+                                            <div class="resource-desc">Free courses</div>
+                                            <div class="resource-meta">
+                                                <span>Free</span>
+                                                <span>•</span>
+                                                <span>Certificate</span>
+                                            </div>
+                                        </div>
+                                        <button class="start-btn">Start →</button>
+                                    </div>
+
+                                    <div class="resource-item">
+                                        <div class="resource-icon">🔶</div>
+                                        <div class="resource-info">
+                                            <div class="resource-name">Google Web.dev</div>
+                                            <div class="resource-desc">Best practices</div>
+                                            <div class="resource-meta">
+                                                <span>Free</span>
+                                                <span>•</span>
+                                                <span>Advanced</span>
+                                            </div>
+                                        </div>
+                                        <button class="start-btn">Start →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-label">4. Personalized Results</div>
+        </div>
+
+        <!-- Screen 5: Career Paths Grid -->
+        <div>
+            <div class="phone-mockup">
+                <div class="samsung-frame">
+                    <div class="screen-container">
+                        <div class="status-bar">
+                            <div class="status-left">9:44</div>
+                            <div class="status-right">📶 📶 🔋</div>
+                        </div>
+                        <div class="app-screen">
+                            <div class="paths-grid-container">
+                                <h2 style="font-size: 16px; margin-bottom: 15px; color: #00563B;">Tech Career Paths</h2>
+                                
+                                <div class="paths-grid">
+                                    <div class="path-grid-item">
+                                        <div class="path-grid-icon">🌐</div>
+                                        <div class="path-grid-name">Web Dev</div>
+                                        <div class="path-grid-info">6 months • High demand</div>
+                                    </div>
+                                    <div class="path-grid-item">
+                                        <div class="path-grid-icon">🎨</div>
+                                        <div class="path-grid-name">UI/UX</div>
+                                        <div class="path-grid-info">4 months • Creative</div>
+                                    </div>
+                                    <div class="path-grid-item">
+                                        <div class="path-grid-icon">🤖</div>
+                                        <div class="path-grid-name">AI/ML</div>
+                                        <div class="path-grid-info">8 months • Future</div>
+                                    </div>
+                                    <div class="path-grid-item">
+                                        <div class="path-grid-icon">📱</div>
+                                        <div class="path-grid-name">Mobile</div>
+                                        <div class="path-grid-info">7 months • Apps</div>
+                                    </div>
+                                    <div class="path-grid-item">
+                                        <div class="path-grid-icon">⛓️</div>
+                                        <div class="path-grid-name">Blockchain</div>
+                                        <div class="path-grid-info">6 months • Web3</div>
+                                    </div>
+                                    <div class="path-grid-item">
+                                        <div class="path-grid-icon">📊</div>
+                                        <div class="path-grid-name">Data</div>
+                                        <div class="path-grid-info">5 months • Analytics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bottom-nav">
+                                <div class="nav-item">
+                                    <span class="nav-icon">🏠</span>
+                                    <span>Home</span>
+                                </div>
+                                <div class="nav-item active">
+                                    <span class="nav-icon">🗺️</span>
+                                    <span>Paths</span>
+                                </div>
+                                <div class="nav-item">
+                                    <span class="nav-icon">📚</span>
+                                    <span>Resources</span>
+                                </div>
+                                <div class="nav-item">
+                                    <span class="nav-icon">👤</span>
+                                    <span>Profile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-label">5. All Career Paths</div>
+        </div>
+
+        <!-- Screen 6: Resources Hub -->
+        <div>
+            <div class="phone-mockup">
+                <div class="samsung-frame">
+                    <div class="screen-container">
+                        <div class="status-bar">
+                            <div class="status-left">9:45</div>
+                            <div class="status-right">📶 📶 🔋</div>
+                        </div>
+                        <div class="app-screen">
+                            <div class="resources-header">
+                                <h2 style="font-size: 16px; margin-bottom: 12px; color: #00563B;">Learning Resources</h2>
+                                <div class="filter-chips">
+                                    <span class="chip active">All</span>
+                                    <span class="chip">Free</span>
+                                    <span class="chip">Beginner</span>
+                                    <span class="chip">Low Data</span>
+                                    <span class="chip">Certificate</span>
+                                </div>
+                            </div>
+
+                            <div class="resources-content">
+                                <div class="resource-item">
+                                    <div class="resource-icon">🌐</div>
+                                    <div class="resource-info">
+                                        <div class="resource-name">W3Schools</div>
+                                        <div class="resource-desc">Complete web reference</div>
+                                        <div class="resource-meta">
+                                            <span>Free</span>
+                                            <span>•</span>
+                                            <span>Beginner</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="resource-item">
+                                    <div class="resource-icon">🎨</div>
+                                    <div class="resource-info">
+                                        <div class="resource-name">Figma Learn</div>
+                                        <div class="resource-desc">Official design tutorials</div>
+                                        <div class="resource-meta">
+                                            <span>Free</span>
+                                            <span>•</span>
+                                            <span>Design</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="resource-item">
+                                    <div class="resource-icon">🔷</div>
+                                    <div class="resource-info">
+                                        <div class="resource-name">Microsoft Learn</div>
+                                        <div class="resource-desc">Free courses</div>
+                                        <div class="resource-meta">
+                                            <span>Free</span>
+                                            <span>•</span>
+                                            <span>All Levels</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="resource-item">
+                                    <div class="resource-icon">🔶</div>
+                                    <div class="resource-info">
+                                        <div class="resource-name">Google Learn</div>
+                                        <div class="resource-desc">Professional courses</div>
+                                        <div class="resource-meta">
+                                            <span>Free</span>
+                                            <span>•</span>
+                                            <span>Advanced</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="resource-item">
+                                    <div class="resource-icon">🤖</div>
+                                    <div class="resource-info">
+                                        <div class="resource-name">Fast.ai</div>
+                                        <div class="resource-desc">Deep learning course</div>
+                                        <div class="resource-meta">
+                                            <span>Free</span>
+                                            <span>•</span>
+                                            <span>AI/ML</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bottom-nav">
+                                <div class="nav-item">
+                                    <span class="nav-icon">🏠</span>
+                                    <span>Home</span>
+                                </div>
+                                <div class="nav-item">
+                                    <span class="nav-icon">🗺️</span>
+                                    <span>Paths</span>
+                                </div>
+                                <div class="nav-item active">
+                                    <span class="nav-icon">📚</span>
+                                    <span>Resources</span>
+                                </div>
+                                <div class="nav-item">
+                                    <span class="nav-icon">👤</span>
+                                    <span>Profile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-label">6. Resources Library</div>
+        </div>
+    </div>
+</body>
+</html>
