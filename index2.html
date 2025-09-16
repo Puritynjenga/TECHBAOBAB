@@ -1,0 +1,2927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBaobab - Your Personal Tech Learning Guide | Free Career Paths</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00563B;
+            --primary-dark: #003d2a;
+            --secondary: #FFD700;
+            --accent: #E3000F;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-hover: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            color: var(--primary-dark);
+        }
+
+        .logo-icon {
+            font-size: 36px;
+            margin-right: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a, .nav-links button {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover, .nav-links button:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Special styling for coach button */
+        .coach-highlight {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53) !important;
+            color: var(--white) !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
+        }
+
+        .coach-highlight:hover {
+            background: linear-gradient(45deg, #FF5252, #FF7043) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5) !important;
+        }
+
+        /* Eye-catching quiz button */
+        .quiz-highlight {
+            background: var(--primary) !important;
+            color: var(--white) !important;
+            font-weight: 700 !important;
+            border: 2px solid var(--primary-dark) !important;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 86, 59, 0.4) !important;
+        }
+
+        .quiz-highlight:hover {
+            background: var(--primary-dark) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 6px 20px rgba(0, 86, 59, 0.6) !important;
+        }
+
+        /* Large prominent quiz button for hero */
+        .quiz-hero-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: 3px solid var(--primary-dark);
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: 800;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 86, 59, 0.5);
+            animation: hero-pulse 3s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-hero-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 86, 59, 0.7);
+        }
+
+        @keyframes hero-pulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(0, 86, 59, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 12px 40px rgba(0, 86, 59, 0.8);
+                transform: scale(1.05);
+            }
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 18px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            background: var(--bg-light);
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .problem-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Solution Steps */
+        .solution-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .solution-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 15px;
+        }
+
+        .step-arrow {
+            font-size: 30px;
+            color: var(--primary);
+        }
+
+        /* Paths Section */
+        .paths-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .path-card {
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .path-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .path-card.featured {
+            border-color: var(--secondary);
+            background: linear-gradient(135deg, #fffdf7 0%, #fff9e6 100%);
+        }
+
+        .trending-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .path-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .path-icon {
+            font-size: 32px;
+        }
+
+        .path-level {
+            font-size: 12px;
+            color: var(--text-light);
+            background: var(--bg-light);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .path-card h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .path-details {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .path-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .skill-tag {
+            background: var(--bg-light);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .skill-tag.soft-skill {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            color: white;
+        }
+
+        .skills-section {
+            margin-top: 15px;
+        }
+
+        .skills-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Career Coaches Section */
+        .coaches-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .coach-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .coach-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .coach-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 20px;
+        }
+
+        .coach-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .coach-title {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .coach-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .specialty-tag {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-content .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        .cta-content small {
+            display: block;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--primary);
+        }
+
+        /* Enhanced Quiz Styles */
+        .quiz-container {
+            text-align: center;
+        }
+
+        .quiz-progress {
+            background: var(--bg-light);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .quiz-progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .quiz-progress-fill {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        .question-section {
+            margin: 30px 0;
+        }
+
+        .question-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .question-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .quiz-option {
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: #f0f9f5;
+            transform: translateX(5px);
+        }
+
+        .quiz-option.selected {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .option-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-icon {
+            font-size: 24px;
+        }
+
+        .option-description {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .quiz-nav-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-back {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-back:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-next {
+            background: var(--primary);
+            color: var(--white);
+            flex: 1;
+        }
+
+        .btn-next:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-next:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .quiz-result h2 {
+            color: var(--primary);
+            margin: 20px 0;
+            font-size: 32px;
+        }
+
+        .quiz-result p {
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        /* Resources Section */
+        .resources-section {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+
+        .resources-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .resources-header h3 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .resource-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .resource-card.recommended {
+            border-color: var(--secondary);
+            position: relative;
+        }
+
+        .resource-card.partner {
+            border-color: #FF6B6B;
+            position: relative;
+        }
+
+        .recommended-badge {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .partner-badge {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #FF6B6B;
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .resource-logo {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .resource-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .resource-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .resource-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .resource-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .learning-path {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+
+        .learning-path h4 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .path-timeline {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .timeline-number {
+            background: var(--secondary);
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: 700;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-desc {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: flex !important;
+                flex-direction: row;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .nav-links a, .nav-links button {
+                font-size: 12px;
+                padding: 6px 12px;
+                background: var(--bg-light);
+                border-radius: 20px;
+                color: var(--primary);
+                font-weight: 600;
+                margin: 2px;
+            }
+            
+            .nav-links .quiz-highlight, .nav-links .coach-highlight {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .solution-steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .step-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .paths-grid,
+            .resources-grid,
+            .coaches-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                justify-content: space-around;
+            }
+
+            .path-timeline {
+                flex-direction: column;
+            }
+
+            .quiz-option {
+                padding: 15px;
+            }
+
+            .option-title {
+                font-size: 16px;
+            }
+            
+            .nav-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .logo {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <span class="logo-icon">🌳</span>
+                    <span class="logo-text">TechBaobab</span>
+                </div>
+                <div class="nav-links">
+                    <button onclick="scrollToSection('paths')">Career Paths</button>
+                    <button onclick="showCoaches()">Career Coaches</button>
+                    <a href="#community">Community</a>
+                    <a href="#mentors">Mentors</a>
+
+                    <button class="btn-primary quiz-highlight" onclick="showQuiz()">Start Quiz</button>
+                </div>
+                <div class="mobile-menu-toggle" onclick="toggleMenu()">☰</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 Your Personal Tech Career Guide</div>
+                <h1 class="hero-title">
+                    From Confused to <span class="gradient-text">Confident</span> 
+                    in Your Tech Journey
+                </h1>
+                <p class="hero-subtitle">
+                    70% of people learning tech skills online struggle with information overload. 
+                    We organize 500+ free resources into clear, personalized learning paths with expert guidance.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-large quiz-hero-btn" onclick="showQuiz()">
+                        Find Your Tech Path - Free 2 Min Quiz
+                    </button>
+
+                    <button class="btn-secondary" onclick="scrollToSection('paths')" style="padding: 8px 16px; font-size: 14px;">
+                        Browse All Paths →
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Career Paths</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Free Resources</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">87%</span>
+                        <span class="stat-label">Complete Foundation</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Expert Coaches</span>
+                    </div>
+                </div>
+                
+                <!-- Community & Mentors Highlight -->
+                <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 16px; margin-top: 30px; text-align: center;">
+                    <p style="margin-bottom: 15px; color: var(--text-dark); font-weight: 600;">🤝 Learn with thousands in our community • 👨‍🏫 Get guidance from industry mentors & coaches</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn-secondary" onclick="scrollToSection('community')" style="padding: 8px 20px;">
+                            Join Community
+                        </button>
+                        <button class="btn-secondary" onclick="scrollToSection('mentors')" style="padding: 8px 20px;">
+                            Find Mentors
+                        </button>
+                        <button class="btn-secondary coach-highlight" onclick="showCoaches()" style="padding: 8px 20px;">
+                            Career Coaches
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">The Challenge We're Solving</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <span class="problem-icon">😵</span>
+                    <h3>Information Overload</h3>
+                    <p>"There are thousands of tutorials but I don't know where to start"</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">🎯</span>
+                    <h3>No Clear Direction</h3>
+                    <p>"I want to learn tech but don't know which career fits me"</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">💰</span>
+                    <h3>Expensive Courses</h3>
+                    <p>"Most bootcamps and courses are too expensive for me"</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">🌍</span>
+                    <h3>No Personal Guidance</h3>
+                    <p>"I need someone to guide me through my learning journey"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title">How TechBaobab Works</h2>
+            <div class="solution-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Take Our Quiz</h3>
+                    <p>Answer simple questions about your interests - no tech knowledge needed</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Get Your Path</h3>
+                    <p>Receive a personalized roadmap tailored to your goals</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Connect with Coaches</h3>
+                    <p>Get professional guidance from industry experts</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Build Your Foundation</h3>
+                    <p>Develop both technical and soft skills at your pace</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Paths Preview -->
+    <section class="paths-section" id="paths">
+        <div class="container">
+            <h2 class="section-title">Explore Tech Career Paths</h2>
+            <div class="paths-grid">
+                <div class="path-card" onclick="openPath('web-dev')">
+                    <div class="path-header">
+                        <span class="path-icon">🌐</span>
+                        <span class="path-level">🚀 High Demand</span>
+                    </div>
+                    <h3>Web Developer</h3>
+                    <p>Build websites and web applications that millions can use</p>
+                    <div class="path-details">
+                        <span>⏱️ 8-12 months</span>
+                        <span>💡 High Demand</span>
+                        <span>📚 45 resources</span>
+                    </div>
+                    <div class="skills-section">
+                        <span class="skills-label">Technical Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                        </div>
+                        <span class="skills-label">Soft Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag soft-skill">Problem Solving</span>
+                            <span class="skill-tag soft-skill">Communication</span>
+                            <span class="skill-tag soft-skill">Time Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="path-card featured" onclick="openPath('ui-ux')">
+                    <div class="trending-badge">🔥 Most Popular</div>
+                    <div class="path-header">
+                        <span class="path-icon">✨</span>
+                        <span class="path-level">📈 Growing Field</span>
+                    </div>
+                    <h3>UI/UX Designer</h3>
+                    <p>Design beautiful, user-friendly digital experiences</p>
+                    <div class="path-details">
+                        <span>⏱️ 6-8 months</span>
+                        <span>🎯 Creative Field</span>
+                        <span>📚 38 resources</span>
+                    </div>
+                    <div class="skills-section">
+                        <span class="skills-label">Technical Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Design Thinking</span>
+                            <span class="skill-tag">Prototyping</span>
+                        </div>
+                        <span class="skills-label">Soft Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag soft-skill">Creativity</span>
+                            <span class="skill-tag soft-skill">Empathy</span>
+                            <span class="skill-tag soft-skill">Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="path-card" onclick="openPath('ai-ml')">
+                    <div class="path-header">
+                        <span class="path-icon">🤖</span>
+                        <span class="path-level">🔥 Cutting Edge</span>
+                    </div>
+                    <h3>AI/Machine Learning</h3>
+                    <p>Build intelligent systems that can learn and adapt</p>
+                    <div class="path-details">
+                        <span>⏱️ 12-18 months</span>
+                        <span>🔥 Cutting Edge</span>
+                        <span>📚 56 resources</span>
+                    </div>
+                    <div class="skills-section">
+                        <span class="skills-label">Technical Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Neural Networks</span>
+                        </div>
+                        <span class="skills-label">Soft Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag soft-skill">Analytical Thinking</span>
+                            <span class="skill-tag soft-skill">Continuous Learning</span>
+                            <span class="skill-tag soft-skill">Research Skills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="path-card" onclick="openPath('data')">
+                    <div class="path-header">
+                        <span class="path-icon">📊</span>
+                        <span class="path-level">📈 Growing Field</span>
+                    </div>
+                    <h3>Data Analyst</h3>
+                    <p>Turn raw data into actionable business insights</p>
+                    <div class="path-details">
+                        <span>⏱️ 6-10 months</span>
+                        <span>📈 Growing Field</span>
+                        <span>📚 52 resources</span>
+                    </div>
+                    <div class="skills-section">
+                        <span class="skills-label">Technical Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag">Excel</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Python</span>
+                        </div>
+                        <span class="skills-label">Soft Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag soft-skill">Critical Thinking</span>
+                            <span class="skill-tag soft-skill">Attention to Detail</span>
+                            <span class="skill-tag soft-skill">Business Acumen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="path-card" onclick="openPath('mobile')">
+                    <div class="path-header">
+                        <span class="path-icon">📱</span>
+                        <span class="path-level">🚀 In Demand</span>
+                    </div>
+                    <h3>Mobile Developer</h3>
+                    <p>Create apps for billions of smartphone users</p>
+                    <div class="path-details">
+                        <span>⏱️ 8-12 months</span>
+                        <span>🚀 In Demand</span>
+                        <span>📚 48 resources</span>
+                    </div>
+                    <div class="skills-section">
+                        <span class="skills-label">Technical Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">Mobile UI</span>
+                        </div>
+                        <span class="skills-label">Soft Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag soft-skill">User Focus</span>
+                            <span class="skill-tag soft-skill">Adaptability</span>
+                            <span class="skill-tag soft-skill">Innovation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="path-card" onclick="openPath('cyber')">
+                    <div class="path-header">
+                        <span class="path-icon">🔒</span>
+                        <span class="path-level">🚀 High Demand</span>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect digital systems and data from threats</p>
+                    <div class="path-details">
+                        <span>⏱️ 8-14 months</span>
+                        <span>🚀 High Demand</span>
+                        <span>📚 42 resources</span>
+                    </div>
+                    <div class="skills-section">
+                        <span class="skills-label">Technical Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag">Network Security</span>
+                            <span class="skill-tag">Ethical Hacking</span>
+                            <span class="skill-tag">Risk Assessment</span>
+                        </div>
+                        <span class="skills-label">Soft Skills:</span>
+                        <div class="path-skills">
+                            <span class="skill-tag soft-skill">Vigilance</span>
+                            <span class="skill-tag soft-skill">Ethics</span>
+                            <span class="skill-tag soft-skill">Stress Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-secondary" style="margin: 40px auto; display: block;" onclick="event.preventDefault(); viewAllPaths(); return false;">
+                View All 50+ Career Paths →
+            </button>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Tech Journey?</h2>
+                <p>Join thousands of learners building their tech foundations with expert guidance</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-primary btn-large" onclick="showQuiz()">Start Your Free Journey</button>
+                    <button class="btn-primary btn-large coach-highlight" onclick="showCoaches()">Get Career Coaching</button>
+                </div>
+                <small>No registration required • Works on any device • 100% Free</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="quiz-container">
+                <h2 style="color: var(--primary); margin-bottom: 10px;">Find Your Perfect Tech Path</h2>
+                <p style="color: var(--text-light); margin-bottom: 20px;">No technical knowledge required - we'll guide you!</p>
+                
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="progressBar" style="width: 0%"></div>
+                </div>
+                
+                <div id="quizContainer">
+                    <!-- Quiz content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Career Path Details Modal -->
+    <div id="pathDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePathDetailsModal()">&times;</span>
+            <div id="pathDetailsContainer">
+                <!-- Path details content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Career Coaches Modal -->
+    <div id="coachesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCoachesModal()">&times;</span>
+            <div class="coaches-section" style="padding: 0;">
+                <h2 class="section-title" style="margin-bottom: 20px;">Meet Our Career Coaches</h2>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 30px;">
+                    Get personalized guidance from industry experts who have been where you want to go
+                </p>
+                
+                <div class="coaches-grid">
+                    <div class="coach-card">
+                        <div class="coach-avatar">👨‍💻</div>
+                        <div class="coach-name">Sarah Chen</div>
+                        <div class="coach-title">Senior Software Engineer at Google</div>
+                        <div class="coach-specialties">
+                            <span class="specialty-tag">Web Development</span>
+                            <span class="specialty-tag">Career Transition</span>
+                            <span class="specialty-tag">Interview Prep</span>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 15px;">
+                            Helped 200+ developers land their dream jobs. Specializes in career transitions and technical interviews.
+                        </p>
+                        <button class="btn-primary" style="width: 100%;">Book Consultation</button>
+                    </div>
+
+                    <div class="coach-card">
+                        <div class="coach-avatar">👩‍🎨</div>
+                        <div class="coach-name">Maria Rodriguez</div>
+                        <div class="coach-title">UX Design Lead at Airbnb</div>
+                        <div class="coach-specialties">
+                            <span class="specialty-tag">UI/UX Design</span>
+                            <span class="specialty-tag">Portfolio Review</span>
+                            <span class="specialty-tag">Design Thinking</span>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 15px;">
+                            10 years in design. Passionate about helping new designers build compelling portfolios.
+                        </p>
+                        <button class="btn-primary" style="width: 100%;">Book Consultation</button>
+                    </div>
+
+                    <div class="coach-card">
+                        <div class="coach-avatar">👨‍🔬</div>
+                        <div class="coach-name">Dr. James Wilson</div>
+                        <div class="coach-title">AI Research Scientist at Microsoft</div>
+                        <div class="coach-specialties">
+                            <span class="specialty-tag">AI/Machine Learning</span>
+                            <span class="specialty-tag">Data Science</span>
+                            <span class="specialty-tag">Research Methods</span>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 15px;">
+                            PhD in Computer Science. Guides aspiring AI engineers through the learning journey.
+                        </p>
+                        <button class="btn-primary" style="width: 100%;">Book Consultation</button>
+                    </div>
+
+                    <div class="coach-card">
+                        <div class="coach-avatar">👩‍💼</div>
+                        <div class="coach-name">Aisha Patel</div>
+                        <div class="coach-title">VP of Engineering at Stripe</div>
+                        <div class="coach-specialties">
+                            <span class="specialty-tag">Leadership</span>
+                            <span class="specialty-tag">Career Growth</span>
+                            <span class="specialty-tag">Tech Management</span>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 15px;">
+                            From bootcamp graduate to VP. Specializes in helping developers advance their careers.
+                        </p>
+                        <button class="btn-primary" style="width: 100%;">Book Consultation</button>
+                    </div>
+
+                    <div class="coach-card">
+                        <div class="coach-avatar">👨‍🔒</div>
+                        <div class="coach-name">Michael Thompson</div>
+                        <div class="coach-title">Cybersecurity Consultant</div>
+                        <div class="coach-specialties">
+                            <span class="specialty-tag">Cybersecurity</span>
+                            <span class="specialty-tag">Ethical Hacking</span>
+                            <span class="specialty-tag">Security Audits</span>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 15px;">
+                            15 years protecting organizations. Helps newcomers break into cybersecurity.
+                        </p>
+                        <button class="btn-primary" style="width: 100%;">Book Consultation</button>
+                    </div>
+
+                    <div class="coach-card">
+                        <div class="coach-avatar">👩‍📱</div>
+                        <div class="coach-name">Grace Kimani</div>
+                        <div class="coach-title">Senior Mobile Developer</div>
+                        <div class="coach-specialties">
+                            <span class="specialty-tag">Mobile Development</span>
+                            <span class="specialty-tag">Flutter</span>
+                            <span class="specialty-tag">App Store Success</span>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 15px;">
+                            Built apps with 1M+ downloads. Guides mobile developers from idea to app store success.
+                        </p>
+                        <button class="btn-primary" style="width: 100%;">Book Consultation</button>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px; padding: 30px; background: var(--bg-light); border-radius: 16px;">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">How It Works</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-size: 32px; margin-bottom: 10px;">📅</div>
+                            <strong>Book Session</strong>
+                            <p style="font-size: 14px; color: var(--text-light);">Choose your coach and schedule a 1-hour session</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 32px; margin-bottom: 10px;">💬</div>
+                            <strong>Get Guidance</strong>
+                            <p style="font-size: 14px; color: var(--text-light);">Receive personalized advice and career planning</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 32px; margin-bottom: 10px;">🚀</div>
+                            <strong>Take Action</strong>
+                            <p style="font-size: 14px; color: var(--text-light);">Follow your custom roadmap with ongoing support</p>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-light); font-size: 14px;">
+                        <strong>Pricing:</strong> First consultation free • Follow-up sessions from $50/hour
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced Quiz Questions with Descriptions
+        const quizQuestions = [
+            {
+                id: 1,
+                title: "What type of work excites you most?",
+                subtitle: "Think about what would make you excited to start your day",
+                options: [
+                    {
+                        icon: "🎨",
+                        title: "Making things look beautiful",
+                        description: "I love colors, layouts, and making things visually appealing. I notice when apps look good or bad.",
+                        path: "ui-ux"
+                    },
+                    {
+                        icon: "🔧",
+                        title: "Building things that work",
+                        description: "I like creating functional things, solving puzzles, and seeing my ideas come to life.",
+                        path: "web-dev"
+                    },
+                    {
+                        icon: "📊",
+                        title: "Finding patterns in information",
+                        description: "I enjoy working with numbers, spreadsheets, and discovering insights from data.",
+                        path: "data"
+                    },
+                    {
+                        icon: "🤖",
+                        title: "Creating smart solutions",
+                        description: "I'm fascinated by how computers can learn and make decisions like humans.",
+                        path: "ai-ml"
+                    },
+                    {
+                        icon: "📱",
+                        title: "Making mobile experiences",
+                        description: "I want to build apps that people use on their phones every day.",
+                        path: "mobile"
+                    },
+                    {
+                        icon: "🔒",
+                        title: "Securing digital systems",
+                        description: "I'm interested in protecting data and systems from cyber threats.",
+                        path: "cyber"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "How do you prefer to express creativity?",
+                subtitle: "There's no wrong answer - just what feels natural to you",
+                options: [
+                    {
+                        icon: "🖼️",
+                        title: "Visual design and aesthetics",
+                        description: "Through colors, shapes, typography, and beautiful interfaces",
+                        path: "ui-ux"
+                    },
+                    {
+                        icon: "⚙️",
+                        title: "Logic and functionality",
+                        description: "By making things work smoothly and efficiently behind the scenes",
+                        path: "web-dev"
+                    },
+                    {
+                        icon: "📈",
+                        title: "Data visualization",
+                        description: "By turning complex data into clear, understandable charts and insights",
+                        path: "data"
+                    },
+                    {
+                        icon: "🧠",
+                        title: "Intelligent automation",
+                        description: "By teaching computers to recognize patterns and make predictions",
+                        path: "ai-ml"
+                    },
+                    {
+                        icon: "📲",
+                        title: "Interactive experiences",
+                        description: "Through touch, swipe, and tap interactions on mobile devices",
+                        path: "mobile"
+                    },
+                    {
+                        icon: "🛡️",
+                        title: "Problem-solving and protection",
+                        description: "By finding and fixing security vulnerabilities",
+                        path: "cyber"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "Which project sounds most interesting to you?",
+                subtitle: "Imagine you're working on one of these right now",
+                options: [
+                    {
+                        icon: "🎨",
+                        title: "Redesigning a popular app",
+                        description: "Making Instagram or WhatsApp more beautiful and easier to use",
+                        path: "ui-ux"
+                    },
+                    {
+                        icon: "🛒",
+                        title: "Building an online store",
+                        description: "Creating a website where people can browse and buy products",
+                        path: "web-dev"
+                    },
+                    {
+                        icon: "📊",
+                        title: "Analyzing business trends",
+                        description: "Finding out which products sell best and predicting future sales",
+                        path: "data"
+                    },
+                    {
+                        icon: "🤖",
+                        title: "Creating a smart assistant",
+                        description: "Building a chatbot that can understand and answer questions",
+                        path: "ai-ml"
+                    },
+                    {
+                        icon: "📱",
+                        title: "Developing a fitness app",
+                        description: "Creating an app that tracks workouts and motivates users",
+                        path: "mobile"
+                    },
+                    {
+                        icon: "🔐",
+                        title: "Securing a banking system",
+                        description: "Protecting financial data from hackers and cyber attacks",
+                        path: "cyber"
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "What's your ideal work environment?",
+                subtitle: "Where do you see yourself thriving?",
+                options: [
+                    {
+                        icon: "🎨",
+                        title: "Creative design studio",
+                        description: "Working with designers, artists, and creative professionals",
+                        path: "ui-ux"
+                    },
+                    {
+                        icon: "💻",
+                        title: "Tech startup",
+                        description: "Building products in a fast-paced, innovative environment",
+                        path: "web-dev"
+                    },
+                    {
+                        icon: "🏢",
+                        title: "Business analytics team",
+                        description: "Helping companies make data-driven decisions",
+                        path: "data"
+                    },
+                    {
+                        icon: "🔬",
+                        title: "Research lab",
+                        description: "Working on cutting-edge AI and machine learning projects",
+                        path: "ai-ml"
+                    },
+                    {
+                        icon: "📱",
+                        title: "Mobile app company",
+                        description: "Creating apps used by millions of people daily",
+                        path: "mobile"
+                    },
+                    {
+                        icon: "🛡️",
+                        title: "Cybersecurity firm",
+                        description: "Protecting organizations from digital threats",
+                        path: "cyber"
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "How much time can you dedicate to learning?",
+                subtitle: "Be realistic about your current situation and commitments",
+                options: [
+                    {
+                        icon: "⚡",
+                        title: "6-8 months (part-time)",
+                        description: "I can dedicate 1-2 hours daily to build UI/UX foundations",
+                        path: "ui-ux"
+                    },
+                    {
+                        icon: "📅",
+                        title: "8-12 months (steady)",
+                        description: "I'm ready to commit consistent time to learn programming fundamentals",
+                        path: "web-dev"
+                    },
+                    {
+                        icon: "📈",
+                        title: "6-10 months (focused)",
+                        description: "I want to learn data analysis and visualization methodically",
+                        path: "data"
+                    },
+                    {
+                        icon: "🎓",
+                        title: "12+ months (intensive)",
+                        description: "I'm willing to invest significant time for specialized AI/ML skills",
+                        path: "ai-ml"
+                    },
+                    {
+                        icon: "📱",
+                        title: "8-12 months (balanced)",
+                        description: "I want to master mobile development at a steady pace",
+                        path: "mobile"
+                    },
+                    {
+                        icon: "🔒",
+                        title: "8-14 months (thorough)",
+                        description: "I want to build strong security fundamentals properly",
+                        path: "cyber"
+                    }
+                ]
+            }
+        ];
+
+        // Enhanced resources database focused on established platforms
+        const resourcesDatabase = {
+            'web-dev': [
+                {
+                    name: 'PowerLearn Project',
+                    logo: '💪',
+                    description: 'Empowering African youth with web development skills',
+                    url: 'https://powerlearnproject.org',
+                    level: 'Beginner',
+                    cost: 'Free/Sponsored',
+                    dataUsage: 'Medium',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'GoMyCode',
+                    logo: '🚀',
+                    description: 'Africa\'s leading web development bootcamp',
+                    url: 'https://gomycode.com',
+                    level: 'All Levels',
+                    cost: 'Paid Bootcamp',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Moringa School',
+                    logo: '🌟',
+                    description: 'Kenya\'s premier coding bootcamp for web development',
+                    url: 'https://moringaschool.com',
+                    level: 'All Levels',
+                    cost: 'Paid Program',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Microsoft Learn',
+                    logo: '🔷',
+                    description: 'Free web development courses and certifications',
+                    url: 'https://learn.microsoft.com',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    recommended: true
+                },
+                {
+                    name: 'Google Developers',
+                    logo: '🔶',
+                    description: 'Learn modern web development with Google',
+                    url: 'https://developers.google.com/learn',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    recommended: true
+                },
+                {
+                    name: 'W3Schools',
+                    logo: '🌐',
+                    description: 'Interactive tutorials for HTML, CSS, JavaScript',
+                    url: 'https://www.w3schools.com',
+                    level: 'Beginner',
+                    cost: 'Free',
+                    dataUsage: 'Low',
+                    recommended: true
+                },
+                {
+                    name: 'web.dev by Google',
+                    logo: '💡',
+                    description: 'Modern web development best practices',
+                    url: 'https://web.dev',
+                    level: 'Intermediate',
+                    cost: 'Free',
+                    dataUsage: 'Low',
+                    recommended: true
+                },
+                {
+                    name: 'Coursera Web Development',
+                    logo: '🎓',
+                    description: 'University-level web development specializations',
+                    url: 'https://www.coursera.org/browse/computer-science/web-development',
+                    level: 'All Levels',
+                    cost: 'Free Audit',
+                    dataUsage: 'High'
+                }
+            ],
+            'ui-ux': [
+                {
+                    name: 'GoMyCode Design Track',
+                    logo: '🚀',
+                    description: 'UI/UX design bootcamp with portfolio development',
+                    url: 'https://gomycode.com',
+                    level: 'All Levels',
+                    cost: 'Paid Bootcamp',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Moringa School Design',
+                    logo: '🌟',
+                    description: 'Professional UI/UX design program',
+                    url: 'https://moringaschool.com',
+                    level: 'All Levels',
+                    cost: 'Paid Program',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'PowerLearn Design',
+                    logo: '💪',
+                    description: 'Digital design skills for African youth',
+                    url: 'https://powerlearnproject.org',
+                    level: 'Beginner',
+                    cost: 'Free/Sponsored',
+                    dataUsage: 'Medium',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Google UX Design Certificate',
+                    logo: '🔶',
+                    description: 'Professional UX design certificate on Coursera',
+                    url: 'https://www.coursera.org/professional-certificates/google-ux-design',
+                    level: 'Beginner',
+                    cost: 'Free Audit',
+                    dataUsage: 'High',
+                    recommended: true
+                },
+                {
+                    name: 'Microsoft Design',
+                    logo: '🔷',
+                    description: 'Design thinking and tools from Microsoft',
+                    url: 'https://learn.microsoft.com/en-us/training/browse/?terms=design',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    recommended: true
+                },
+                {
+                    name: 'Ajira Digital Design',
+                    logo: '🎨',
+                    description: 'Digital design skills for African freelancers',
+                    url: 'https://ajiradigital.go.ke',
+                    level: 'Beginner',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    bootcamp: true
+                },
+                {
+                    name: 'Coursera UI/UX Design',
+                    logo: '🎓',
+                    description: 'Top university UI/UX design specializations',
+                    url: 'https://www.coursera.org/browse/arts-and-humanities/design-and-product',
+                    level: 'All Levels',
+                    cost: 'Free Audit',
+                    dataUsage: 'High'
+                }
+            ],
+            'data': [
+                {
+                    name: 'PowerLearn Data Science',
+                    logo: '💪',
+                    description: 'Data science with African datasets and contexts',
+                    url: 'https://powerlearnproject.org',
+                    level: 'Beginner',
+                    cost: 'Free/Sponsored',
+                    dataUsage: 'Medium',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'GoMyCode Data Track',
+                    logo: '🚀',
+                    description: 'Comprehensive data science bootcamp',
+                    url: 'https://gomycode.com',
+                    level: 'All Levels',
+                    cost: 'Paid Bootcamp',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Moringa Data Science',
+                    logo: '🌟',
+                    description: 'Professional data science training program',
+                    url: 'https://moringaschool.com',
+                    level: 'All Levels',
+                    cost: 'Paid Program',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Microsoft Learn Data',
+                    logo: '🔷',
+                    description: 'Azure data and AI learning paths',
+                    url: 'https://learn.microsoft.com/en-us/training/browse/?products=azure&subjects=data-ai',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    recommended: true
+                },
+                {
+                    name: 'Google Data Analytics',
+                    logo: '🔶',
+                    description: 'Professional data analytics certificate',
+                    url: 'https://www.coursera.org/professional-certificates/google-data-analytics',
+                    level: 'Beginner',
+                    cost: 'Free Audit',
+                    dataUsage: 'High',
+                    recommended: true
+                },
+                {
+                    name: 'Coursera Data Science',
+                    logo: '🎓',
+                    description: 'University data science specializations',
+                    url: 'https://www.coursera.org/browse/data-science',
+                    level: 'All Levels',
+                    cost: 'Free Audit',
+                    dataUsage: 'High'
+                },
+                {
+                    name: 'Ajira Digital Analytics',
+                    logo: '📊',
+                    description: 'Data analysis skills for digital work',
+                    url: 'https://ajiradigital.go.ke',
+                    level: 'Beginner',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    bootcamp: true
+                }
+            ],
+            'ai-ml': [
+                {
+                    name: 'GoMyCode AI Track',
+                    logo: '🚀',
+                    description: 'AI and machine learning bootcamp',
+                    url: 'https://gomycode.com',
+                    level: 'Intermediate',
+                    cost: 'Paid Bootcamp',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Moringa AI Program',
+                    logo: '🌟',
+                    description: 'Professional AI and machine learning training',
+                    url: 'https://moringaschool.com',
+                    level: 'Intermediate',
+                    cost: 'Paid Program',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Microsoft Learn AI',
+                    logo: '🔷',
+                    description: 'Azure AI and machine learning fundamentals',
+                    url: 'https://learn.microsoft.com/en-us/training/browse/?products=azure&subjects=artificial-intelligence',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    recommended: true
+                },
+                {
+                    name: 'Google AI Education',
+                    logo: '🔶',
+                    description: 'Machine learning crash course and AI fundamentals',
+                    url: 'https://ai.google/education/',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    recommended: true
+                },
+                {
+                    name: 'Coursera Machine Learning',
+                    logo: '🎓',
+                    description: 'Andrew Ng\'s ML course and AI specializations',
+                    url: 'https://www.coursera.org/learn/machine-learning',
+                    level: 'Beginner',
+                    cost: 'Free Audit',
+                    dataUsage: 'High',
+                    recommended: true
+                },
+                {
+                    name: 'PowerLearn AI Track',
+                    logo: '💪',
+                    description: 'AI fundamentals for African developers',
+                    url: 'https://powerlearnproject.org',
+                    level: 'Beginner',
+                    cost: 'Free/Sponsored',
+                    dataUsage: 'Medium',
+                    partner: true
+                }
+            ],
+            'mobile': [
+                {
+                    name: 'GoMyCode Mobile Track',
+                    logo: '🚀',
+                    description: 'Flutter and React Native bootcamp',
+                    url: 'https://gomycode.com',
+                    level: 'All Levels',
+                    cost: 'Paid Bootcamp',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Moringa Mobile Dev',
+                    logo: '🌟',
+                    description: 'Professional mobile development program',
+                    url: 'https://moringaschool.com',
+                    level: 'All Levels',
+                    cost: 'Paid Program',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'PowerLearn Mobile',
+                    logo: '💪',
+                    description: 'Mobile app development for beginners',
+                    url: 'https://powerlearnproject.org',
+                    level: 'Beginner',
+                    cost: 'Free/Sponsored',
+                    dataUsage: 'Medium',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Google Flutter',
+                    logo: '🔶',
+                    description: 'Official Flutter development resources',
+                    url: 'https://flutter.dev/learn',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Low',
+                    recommended: true
+                },
+                {
+                    name: 'Microsoft Mobile Dev',
+                    logo: '🔷',
+                    description: 'Xamarin and .NET mobile development',
+                    url: 'https://learn.microsoft.com/en-us/training/browse/?terms=mobile',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium'
+                },
+                {
+                    name: 'Coursera Mobile Development',
+                    logo: '🎓',
+                    description: 'University mobile development specializations',
+                    url: 'https://www.coursera.org/browse/computer-science/mobile-and-web-development',
+                    level: 'All Levels',
+                    cost: 'Free Audit',
+                    dataUsage: 'High'
+                },
+                {
+                    name: 'Ajira Mobile Skills',
+                    logo: '📱',
+                    description: 'Mobile development for digital freelancers',
+                    url: 'https://ajiradigital.go.ke',
+                    level: 'Beginner',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    bootcamp: true
+                }
+            ],
+            'cyber': [
+                {
+                    name: 'GoMyCode Cybersecurity',
+                    logo: '🚀',
+                    description: 'Cybersecurity bootcamp with hands-on labs',
+                    url: 'https://gomycode.com',
+                    level: 'All Levels',
+                    cost: 'Paid Bootcamp',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Moringa Cybersecurity',
+                    logo: '🌟',
+                    description: 'Professional cybersecurity training program',
+                    url: 'https://moringaschool.com',
+                    level: 'All Levels',
+                    cost: 'Paid Program',
+                    dataUsage: 'High',
+                    recommended: true,
+                    partner: true
+                },
+                {
+                    name: 'Microsoft Security',
+                    logo: '🔷',
+                    description: 'Azure security and cybersecurity fundamentals',
+                    url: 'https://learn.microsoft.com/en-us/training/browse/?products=azure&subjects=security',
+                    level: 'All Levels',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    recommended: true
+                },
+                {
+                    name: 'Google Cybersecurity',
+                    logo: '🔶',
+                    description: 'Professional cybersecurity certificate',
+                    url: 'https://www.coursera.org/professional-certificates/google-cybersecurity',
+                    level: 'Beginner',
+                    cost: 'Free Audit',
+                    dataUsage: 'High',
+                    recommended: true
+                },
+                {
+                    name: 'Coursera Cybersecurity',
+                    logo: '🎓',
+                    description: 'University cybersecurity specializations',
+                    url: 'https://www.coursera.org/browse/information-technology/cybersecurity',
+                    level: 'All Levels',
+                    cost: 'Free Audit',
+                    dataUsage: 'High',
+                    recommended: true
+                },
+                {
+                    name: 'PowerLearn Security',
+                    logo: '💪',
+                    description: 'Cybersecurity basics for African professionals',
+                    url: 'https://powerlearnproject.org',
+                    level: 'Beginner',
+                    cost: 'Free/Sponsored',
+                    dataUsage: 'Medium',
+                    partner: true
+                },
+                {
+                    name: 'Ajira Digital Security',
+                    logo: '🛡️',
+                    description: 'Digital security skills for online work',
+                    url: 'https://ajiradigital.go.ke',
+                    level: 'Beginner',
+                    cost: 'Free',
+                    dataUsage: 'Medium',
+                    bootcamp: true
+                }
+            ]
+        };
+
+        let currentQuestion = 0;
+        let selectedAnswers = [];
+
+        function showQuiz() {
+            const modal = document.getElementById('quizModal');
+            modal.style.display = 'block';
+            currentQuestion = 0;
+            selectedAnswers = [];
+            renderQuestion();
+        }
+
+        function showCoaches() {
+            const modal = document.getElementById('coachesModal');
+            modal.style.display = 'block';
+        }
+
+        function closeCoachesModal() {
+            document.getElementById('coachesModal').style.display = 'none';
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('quizContainer');
+            const question = quizQuestions[currentQuestion];
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            container.innerHTML = `
+                <div class="question-section">
+                    <h3 class="question-title">${question.title}</h3>
+                    <p class="question-subtitle">${question.subtitle}</p>
+                    
+                    <div class="quiz-options">
+                        ${question.options.map((opt, i) => `
+                            <div class="quiz-option" onclick="selectOption(${i}, '${opt.path}')" data-index="${i}">
+                                <div class="option-title">
+                                    <span class="option-icon">${opt.icon}</span>
+                                    ${opt.title}
+                                </div>
+                                <div class="option-description">${opt.description}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="quiz-navigation">
+                        ${currentQuestion > 0 ? `
+                            <button class="quiz-nav-btn btn-back" onclick="previousQuestion()">
+                                ← Back
+                            </button>
+                        ` : '<div></div>'}
+                        <button class="quiz-nav-btn btn-next" id="nextBtn" onclick="nextQuestion()" disabled>
+                            ${currentQuestion === quizQuestions.length - 1 ? 'See Results' : 'Next Question'} →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectOption(index, path) {
+            // Remove previous selection
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection to clicked option
+            document.querySelector(`[data-index="${index}"]`).classList.add('selected');
+            
+            // Store answer
+            selectedAnswers[currentQuestion] = path;
+            
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+                
+                // Restore previous selection if exists
+                if (selectedAnswers[currentQuestion]) {
+                    const options = document.querySelectorAll('.quiz-option');
+                    options.forEach((opt, i) => {
+                        if (quizQuestions[currentQuestion].options[i].path === selectedAnswers[currentQuestion]) {
+                            opt.classList.add('selected');
+                            document.getElementById('nextBtn').disabled = false;
+                        }
+                    });
+                }
+            }
+        }
+
+        function showResult() {
+            // Count path occurrences
+            const pathCounts = {};
+            selectedAnswers.forEach(path => {
+                pathCounts[path] = (pathCounts[path] || 0) + 1;
+            });
+            
+            // Find most selected path
+            let recommendedPath = 'web-dev';
+            let maxCount = 0;
+            for (const [path, count] of Object.entries(pathCounts)) {
+                if (count > maxCount) {
+                    maxCount = count;
+                    recommendedPath = path;
+                }
+            }
+            
+            const pathNames = {
+                'ui-ux': 'UI/UX Design',
+                'web-dev': 'Web Development',
+                'data': 'Data Analytics',
+                'ai-ml': 'AI & Machine Learning',
+                'mobile': 'Mobile Development',
+                'cyber': 'Cybersecurity'
+            };
+
+            const pathDescriptions = {
+                'ui-ux': 'You have a creative eye and love making things beautiful and user-friendly. UI/UX design is perfect for bringing your aesthetic vision to digital products.',
+                'web-dev': 'You enjoy building things that work and solving logical problems. Web development will let you create amazing websites and applications.',
+                'data': 'You have an analytical mind and love finding patterns. Data analytics will help you turn information into powerful insights.',
+                'ai-ml': 'You are fascinated by intelligent systems and cutting-edge technology. AI/ML will let you build the future of smart applications.',
+                'mobile': 'You want to create apps that people use every day on their phones. Mobile development is your path to building the next big app.',
+                'cyber': 'You think like a protector and problem-solver. Cybersecurity will let you defend against digital threats and keep systems safe.'
+            };
+            
+            const resources = resourcesDatabase[recommendedPath] || resourcesDatabase['web-dev'];
+            
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = `
+                <div class="quiz-result">
+                    <h2 style="font-size: 36px; margin-bottom: 10px;">🎉 Perfect Match Found!</h2>
+                    <h3 style="color: var(--primary); font-size: 28px; margin-bottom: 20px;">${pathNames[recommendedPath]}</h3>
+                    <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">${pathDescriptions[recommendedPath]}</p>
+                </div>
+
+                <div class="resources-section">
+                    <div class="resources-header">
+                        <h3>Start Your Foundation Today!</h3>
+                        <p>We've curated the best resources including our partner institutions:</p>
+                    </div>
+                    
+                    <div class="resources-grid">
+                        ${resources.map(resource => `
+                            <div class="resource-card ${resource.recommended ? 'recommended' : ''}">
+                                ${resource.recommended ? '<span class="recommended-badge">⭐ START HERE</span>' : ''}
+                                ${resource.bootcamp ? '<span class="partner-badge">🎓 BOOTCAMP</span>' : ''}
+                                <div class="resource-logo">${resource.logo}</div>
+                                <div class="resource-name">${resource.name}</div>
+                                <div class="resource-description">${resource.description}</div>
+                                <div class="resource-meta">
+                                    <span>📚 ${resource.level}</span>
+                                    <span>💰 ${resource.cost}</span>
+                                    <span>📱 ${resource.dataUsage}</span>
+                                </div>
+                                <a href="${resource.url}" target="_blank" class="resource-link">
+                                    Start Learning →
+                                </a>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="learning-path">
+                        <h4>Your Foundation Building Journey</h4>
+                        <div class="path-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-number">1</div>
+                                <div class="timeline-title">Month 1-2</div>
+                                <div class="timeline-desc">Learn core concepts & basics</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-number">2</div>
+                                <div class="timeline-title">Month 3-4</div>
+                                <div class="timeline-desc">Practice with guided projects</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-number">3</div>
+                                <div class="timeline-title">Month 5-6</div>
+                                <div class="timeline-desc">Build confidence & portfolio</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-number">4</div>
+                                <div class="timeline-title">Next Phase</div>
+                                <div class="timeline-desc">Advanced skills & specialization</div>
+                            </div>
+                        </div>
+                        <p style="text-align: center; margin-top: 15px; font-size: 14px; opacity: 0.9;">
+                            <strong>Note:</strong> This foundation prepares you for continued learning toward career readiness
+                        </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <p style="color: var(--text-light); font-size: 16px;">
+                            Ready to start your journey? Explore the resources above or get personalized guidance from our career coaches.
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function closeModal() {
+            document.getElementById('quizModal').style.display = 'none';
+            currentQuestion = 0;
+            selectedAnswers = [];
+        }
+
+        function openPath(pathId) {
+            // Pre-select answers for this path and show results
+            selectedAnswers = Array(quizQuestions.length).fill(pathId);
+            showQuiz();
+            showResult();
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '60px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function viewAllPaths() {
+            const modal = document.getElementById('quizModal');
+            const container = document.getElementById('quizContainer');
+            
+            const allPaths = [
+                // Development & Programming
+                { name: 'Frontend Web Developer', icon: '🌐', time: '8-12 months', status: '🚀 High Demand', category: 'Development', description: 'Create user interfaces and experiences that people interact with daily', techSkills: ['HTML/CSS', 'JavaScript', 'React'], softSkills: ['Problem Solving', 'Communication', 'Attention to Detail'] },
+                { name: 'Backend Developer', icon: '⚙️', time: '10-14 months', status: '🚀 High Demand', category: 'Development', description: 'Build server-side logic and databases that power applications', techSkills: ['Python/Node.js', 'Databases', 'APIs'], softSkills: ['Logical Thinking', 'System Design', 'Debugging'] },
+                { name: 'Full Stack Developer', icon: '🔧', time: '12-18 months', status: '🚀 High Demand', category: 'Development', description: 'Work on both frontend and backend to create complete web applications', techSkills: ['Frontend + Backend', 'DevOps', 'Full Stack'], softSkills: ['Versatility', 'Project Management', 'Continuous Learning'] },
+                { name: 'Mobile App Developer', icon: '📱', time: '8-12 months', status: '🚀 In Demand', category: 'Development', description: 'Create mobile applications for iOS and Android platforms', techSkills: ['Flutter/React Native', 'Mobile UI', 'App Store'], softSkills: ['User Focus', 'Innovation', 'Adaptation'] },
+                
+                // Design & Creative
+                { name: 'UI/UX Designer', icon: '🎨', time: '6-8 months', status: '📈 Growing Field', category: 'Design', description: 'Design intuitive user interfaces and seamless user experiences', techSkills: ['Figma', 'Prototyping', 'Design Systems'], softSkills: ['Creativity', 'Empathy', 'Communication'] },
+                { name: 'Graphic Designer', icon: '🖼️', time: '4-7 months', status: '💼 Stable Field', category: 'Design', description: 'Create visual content for print and digital media', techSkills: ['Adobe Creative Suite', 'Typography', 'Branding'], softSkills: ['Creativity', 'Client Communication', 'Time Management'] },
+                { name: 'Product Designer', icon: '📐', time: '8-12 months', status: '🚀 High Demand', category: 'Design', description: 'Design complete product experiences from concept to launch', techSkills: ['Design Thinking', 'User Research', 'Prototyping'], softSkills: ['Strategic Thinking', 'Collaboration', 'Problem Solving'] },
+                
+                // Data & Analytics
+                { name: 'Data Analyst', icon: '📊', time: '6-10 months', status: '📈 Growing Field', category: 'Data', description: 'Analyze data to extract insights and support business decisions', techSkills: ['Excel', 'SQL', 'Python/R'], softSkills: ['Critical Thinking', 'Business Acumen', 'Communication'] },
+                { name: 'Data Scientist', icon: '🔬', time: '12-18 months', status: '🚀 High Demand', category: 'Data', description: 'Use advanced analytics and machine learning to solve complex problems', techSkills: ['Machine Learning', 'Statistics', 'Programming'], softSkills: ['Research Skills', 'Problem Solving', 'Storytelling'] },
+                { name: 'Business Intelligence Analyst', icon: '📈', time: '8-12 months', status: '📈 Growing Field', category: 'Data', description: 'Transform business data into actionable insights and reports', techSkills: ['BI Tools', 'Data Visualization', 'SQL'], softSkills: ['Business Understanding', 'Analytical Thinking', 'Presentation'] },
+                
+                // AI & Machine Learning
+                { name: 'Machine Learning Engineer', icon: '🤖', time: '12-18 months', status: '🔥 Cutting Edge', category: 'AI/ML', description: 'Build and deploy machine learning models for real-world applications', techSkills: ['Python', 'TensorFlow', 'MLOps'], softSkills: ['Research Mindset', 'Continuous Learning', 'Problem Solving'] },
+                { name: 'AI Specialist', icon: '🧠', time: '14-20 months', status: '🔥 Cutting Edge', category: 'AI/ML', description: 'Develop artificial intelligence solutions for various industries', techSkills: ['Deep Learning', 'NLP', 'Computer Vision'], softSkills: ['Innovation', 'Ethical Thinking', 'Collaboration'] },
+                
+                // Cybersecurity
+                { name: 'Cybersecurity Analyst', icon: '🔒', time: '8-14 months', status: '🚀 High Demand', category: 'Security', description: 'Protect organizations from cyber threats and security breaches', techSkills: ['Network Security', 'Threat Analysis', 'Security Tools'], softSkills: ['Vigilance', 'Ethics', 'Stress Management'] },
+                { name: 'Ethical Hacker', icon: '👨‍💻', time: '10-16 months', status: '🚀 High Demand', category: 'Security', description: 'Find vulnerabilities in systems to improve security defenses', techSkills: ['Penetration Testing', 'Security Assessment', 'Vulnerability Analysis'], softSkills: ['Ethical Mindset', 'Curiosity', 'Attention to Detail'] },
+                
+                // Cloud & Infrastructure
+                { name: 'Cloud Engineer', icon: '☁️', time: '8-12 months', status: '🚀 High Demand', category: 'Cloud', description: 'Design and manage cloud-based infrastructure and services', techSkills: ['AWS/Azure', 'DevOps', 'Infrastructure'], softSkills: ['System Thinking', 'Problem Solving', 'Continuous Learning'] },
+                { name: 'DevOps Engineer', icon: '🔄', time: '10-14 months', status: '🚀 High Demand', category: 'Cloud', description: 'Bridge development and operations to streamline software deployment', techSkills: ['CI/CD', 'Containerization', 'Automation'], softSkills: ['Collaboration', 'Process Improvement', 'Communication'] },
+                
+                // Digital Marketing
+                { name: 'Digital Marketing Specialist', icon: '📱', time: '4-6 months', status: '📈 Growing Field', category: 'Marketing', description: 'Create and execute digital marketing campaigns across multiple channels', techSkills: ['SEO/SEM', 'Social Media', 'Analytics'], softSkills: ['Creativity', 'Communication', 'Adaptability'] },
+                { name: 'Content Creator', icon: '📹', time: '3-5 months', status: '📈 Growing Field', category: 'Marketing', description: 'Create engaging content for digital platforms and audiences', techSkills: ['Video Editing', 'Content Strategy', 'Platform Knowledge'], softSkills: ['Storytelling', 'Creativity', 'Audience Understanding'] },
+                
+                // Emerging Technologies
+                { name: 'Blockchain Developer', icon: '⛓️', time: '10-14 months', status: '💎 Emerging Tech', category: 'Blockchain', description: 'Build decentralized applications and blockchain solutions', techSkills: ['Solidity', 'Smart Contracts', 'Blockchain Protocols'], softSkills: ['Innovation', 'Security Mindset', 'Continuous Learning'] },
+                { name: 'VR/AR Developer', icon: '🥽', time: '10-14 months', status: '💎 Emerging Tech', category: 'Emerging', description: 'Create immersive virtual and augmented reality experiences', techSkills: ['Unity/Unreal', '3D Modeling', 'VR/AR SDKs'], softSkills: ['Creativity', 'Spatial Thinking', 'User Experience'] }
+            ];
+
+            // Group paths by category
+            const categories = {};
+            allPaths.forEach(path => {
+                if (!categories[path.category]) {
+                    categories[path.category] = [];
+                }
+                categories[path.category].push(path);
+            });
+
+            container.innerHTML = `
+                <div style="text-align: center;">
+                    <h2 style="color: var(--primary); margin-bottom: 10px;">Tech Career Paths</h2>
+                    <p style="color: var(--text-light); margin-bottom: 30px;">Explore every opportunity - with both technical and soft skills development</p>
+                    
+                    <div style="max-height: 60vh; overflow-y: auto; text-align: left;">
+                        ${Object.entries(categories).map(([category, paths]) => `
+                            <div style="margin-bottom: 30px;">
+                                <h3 style="color: var(--primary); margin-bottom: 15px; padding: 10px; background: var(--bg-light); border-radius: 8px;">
+                                    ${category} (${paths.length} paths)
+                                </h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                                    ${paths.map(path => `
+                                        <div style="background: var(--white); border: 2px solid #e0e0e0; border-radius: 12px; padding: 15px; transition: all 0.3s; cursor: pointer;" 
+                                             onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='translateY(-2px)'"
+                                             onmouseout="this.style.borderColor='#e0e0e0'; this.style.transform='translateY(0)'">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                                <span style="font-size: 24px;">${path.icon}</span>
+                                                <span style="font-size: 11px; background: var(--bg-light); padding: 3px 8px; border-radius: 10px; color: var(--text-light);">${path.status}</span>
+                                            </div>
+                                            <h4 style="margin-bottom: 8px; font-size: 16px; color: var(--text-dark);">${path.name}</h4>
+                                            <p style="font-size: 13px; color: var(--text-light); margin-bottom: 12px; line-height: 1.4;">${path.description}</p>
+                                            <div style="display: flex; gap: 10px; margin-bottom: 10px; font-size: 12px; color: var(--text-light);">
+                                                <span>⏱️ ${path.time}</span>
+                                            </div>
+                                            ${path.techSkills ? `
+                                                <div style="margin-bottom: 8px;">
+                                                    <div style="font-size: 11px; font-weight: 600; margin-bottom: 4px;">Technical Skills:</div>
+                                                    <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                                                        ${path.techSkills.map(skill => `<span style="background: var(--bg-light); padding: 2px 6px; border-radius: 8px; font-size: 10px;">${skill}</span>`).join('')}
+                                                    </div>
+                                                </div>
+                                            ` : ''}
+                                            ${path.softSkills ? `
+                                                <div>
+                                                    <div style="font-size: 11px; font-weight: 600; margin-bottom: 4px;">Soft Skills:</div>
+                                                    <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                                                        ${path.softSkills.map(skill => `<span style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); color: white; padding: 2px 6px; border-radius: 8px; font-size: 10px;">${skill}</span>`).join('')}
+                                                    </div>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                        <p style="margin-bottom: 15px; color: var(--text-light);">Not sure which path fits you?</p>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button class="btn-primary btn-large" onclick="closeModal(); showQuiz();">
+                                Take Our Quiz to Find Your Perfect Match
+                            </button>
+                            <button class="btn-primary btn-large coach-highlight" onclick="closeModal(); showCoaches();">
+                                Get Career Coaching
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        // Comprehensive career path details database
+        const careerPathDetails = {
+            'web-dev': {
+                title: 'Web Developer',
+                icon: '🌐',
+                description: 'Web developers build and maintain websites and web applications that millions of people use every day. You\'ll work on everything from simple static websites to complex interactive applications, using modern technologies to create seamless user experiences.',
+                whatYouWillDo: [
+                    'Design and build responsive websites and web applications',
+                    'Write clean, efficient code in HTML, CSS, and JavaScript',
+                    'Collaborate with designers to implement user interfaces',
+                    'Work with backend developers to integrate APIs and databases',
+                    'Debug and troubleshoot issues across different browsers',
+                    'Optimize websites for speed, SEO, and accessibility'
+                ],
+                technicalSkills: [
+                    'HTML5 & CSS3 - Structure and styling of web pages',
+                    'JavaScript - Programming language for web interactivity',
+                    'React/Vue.js - Modern JavaScript frameworks',
+                    'Git & GitHub - Version control and collaboration',
+                    'Responsive Design - Mobile-first development',
+                    'Web APIs - Connecting to external services',
+                    'Testing - Writing and running automated tests',
+                    'Build Tools - Webpack, npm, and development workflows'
+                ],
+                softSkills: [
+                    'Problem-Solving - Breaking down complex issues into manageable parts',
+                    'Communication - Explaining technical concepts to non-technical stakeholders',
+                    'Time Management - Meeting project deadlines and managing multiple tasks',
+                    'Attention to Detail - Ensuring pixel-perfect implementations',
+                    'Continuous Learning - Staying updated with rapidly changing technologies',
+                    'Collaboration - Working effectively in cross-functional teams'
+                ],
+                careerPath: [
+                    { phase: 'Months 1-3', focus: 'HTML, CSS, and JavaScript fundamentals' },
+                    { phase: 'Months 4-6', focus: 'Modern frameworks (React) and responsive design' },
+                    { phase: 'Months 7-9', focus: 'Build portfolio projects and learn backend basics' },
+                    { phase: 'Months 10-12', focus: 'Advanced topics, testing, and job preparation' }
+                ],
+                salaryRange: '$45,000 - $120,000 annually (varies by location and experience)',
+                jobOutlook: 'Excellent - Web development jobs are expected to grow 13% from 2020-2030',
+                workEnvironment: 'Tech companies, agencies, freelance, remote-friendly',
+                resources: resourcesDatabase['web-dev']
+            },
+            'ui-ux': {
+                title: 'UI/UX Designer',
+                icon: '🎨',
+                description: 'UI/UX designers create intuitive and visually appealing digital experiences. You\'ll research user needs, design interfaces, and ensure that websites and apps are both beautiful and easy to use.',
+                whatYouWillDo: [
+                    'Research user needs through interviews and usability testing',
+                    'Create wireframes, prototypes, and user journey maps',
+                    'Design beautiful and functional user interfaces',
+                    'Collaborate with developers to implement designs',
+                    'Conduct user testing and iterate based on feedback',
+                    'Maintain design systems and style guides'
+                ],
+                technicalSkills: [
+                    'Figma/Adobe XD - Design and prototyping tools',
+                    'Design Systems - Creating consistent UI components',
+                    'Prototyping - Interactive mockups and user flows',
+                    'User Research - Methods for understanding user needs',
+                    'Information Architecture - Organizing content and features',
+                    'Visual Design - Typography, color theory, and layout',
+                    'Usability Testing - Validating design decisions',
+                    'Design Thinking - Human-centered design process'
+                ],
+                softSkills: [
+                    'Creativity - Generating innovative design solutions',
+                    'Empathy - Understanding and designing for user needs',
+                    'Communication - Presenting and defending design decisions',
+                    'Collaboration - Working closely with developers and product managers',
+                    'Critical Thinking - Analyzing user feedback and data',
+                    'Adaptability - Iterating designs based on new requirements'
+                ],
+                careerPath: [
+                    { phase: 'Months 1-2', focus: 'Design principles and Figma fundamentals' },
+                    { phase: 'Months 3-4', focus: 'User research methods and wireframing' },
+                    { phase: 'Months 5-6', focus: 'Visual design and prototyping' },
+                    { phase: 'Months 7-8', focus: 'Portfolio development and design systems' }
+                ],
+                salaryRange: '$50,000 - $110,000 annually (varies by location and experience)',
+                jobOutlook: 'Very Good - UX design roles growing 13% faster than average',
+                workEnvironment: 'Design agencies, tech companies, consulting firms, remote opportunities',
+                resources: resourcesDatabase['ui-ux']
+            },
+            'data': {
+                title: 'Data Analyst',
+                icon: '📊',
+                description: 'Data analysts transform raw data into actionable business insights. You\'ll work with databases, create visualizations, and help organizations make data-driven decisions that impact their success.',
+                whatYouWillDo: [
+                    'Collect and clean data from various sources',
+                    'Perform statistical analysis to identify trends and patterns',
+                    'Create compelling visualizations and dashboards',
+                    'Write reports and present findings to stakeholders',
+                    'Build automated reporting systems',
+                    'Collaborate with teams to solve business problems'
+                ],
+                technicalSkills: [
+                    'Excel/Google Sheets - Data manipulation and analysis',
+                    'SQL - Database querying and data extraction',
+                    'Python/R - Statistical programming languages',
+                    'Tableau/Power BI - Data visualization tools',
+                    'Statistics - Understanding of statistical concepts',
+                    'Database Management - Working with various data sources',
+                    'Data Cleaning - Preparing messy data for analysis',
+                    'Business Intelligence - Creating automated reports'
+                ],
+                softSkills: [
+                    'Critical Thinking - Questioning assumptions and finding insights',
+                    'Business Acumen - Understanding how data impacts business decisions',
+                    'Communication - Explaining complex findings to non-technical audiences',
+                    'Attention to Detail - Ensuring data accuracy and quality',
+                    'Curiosity - Asking the right questions to uncover insights',
+                    'Problem-Solving - Finding creative solutions with data'
+                ],
+                careerPath: [
+                    { phase: 'Months 1-2', focus: 'Excel mastery and basic statistics' },
+                    { phase: 'Months 3-5', focus: 'SQL and database fundamentals' },
+                    { phase: 'Months 6-8', focus: 'Python/R programming for data analysis' },
+                    { phase: 'Months 9-10', focus: 'Advanced visualization and portfolio projects' }
+                ],
+                salaryRange: '$50,000 - $95,000 annually (varies by industry and location)',
+                jobOutlook: 'Excellent - Data analyst jobs growing 25% from 2020-2030',
+                workEnvironment: 'Every industry needs data analysts - finance, healthcare, retail, tech',
+                resources: resourcesDatabase['data']
+            },
+            'ai-ml': {
+                title: 'AI & Machine Learning Engineer',
+                icon: '🤖',
+                description: 'AI/ML engineers build intelligent systems that can learn and make predictions. You\'ll work on cutting-edge technology, creating algorithms that can recognize patterns, make recommendations, and automate complex decisions.',
+                whatYouWillDo: [
+                    'Develop machine learning models and algorithms',
+                    'Work with large datasets to train AI systems',
+                    'Deploy models to production environments',
+                    'Optimize model performance and accuracy',
+                    'Research and implement new AI techniques',
+                    'Collaborate with data scientists and engineers'
+                ],
+                technicalSkills: [
+                    'Python - Primary programming language for ML',
+                    'TensorFlow/PyTorch - Machine learning frameworks',
+                    'Statistics & Mathematics - Foundation for understanding ML',
+                    'Data Processing - Cleaning and preparing training data',
+                    'Neural Networks - Deep learning architectures',
+                    'MLOps - Deploying and monitoring ML models',
+                    'Cloud Platforms - AWS, Google Cloud, Azure for ML',
+                    'Version Control - Git for code and model management'
+                ],
+                softSkills: [
+                    'Analytical Thinking - Breaking down complex problems systematically',
+                    'Continuous Learning - Staying current with rapidly evolving field',
+                    'Research Skills - Reading papers and implementing new techniques',
+                    'Patience - ML model training and tuning takes time',
+                    'Communication - Explaining AI concepts to business stakeholders',
+                    'Ethical Reasoning - Understanding AI bias and fairness issues'
+                ],
+                careerPath: [
+                    { phase: 'Months 1-3', focus: 'Python programming and statistics foundations' },
+                    { phase: 'Months 4-8', focus: 'Machine learning fundamentals and algorithms' },
+                    { phase: 'Months 9-12', focus: 'Deep learning and neural networks' },
+                    { phase: 'Months 13-18', focus: 'Specialized areas and production deployment' }
+                ],
+                salaryRange: '$70,000 - $150,000+ annually (high demand field)',
+                jobOutlook: 'Exceptional - AI/ML roles growing 40%+ year over year',
+                workEnvironment: 'Tech giants, startups, research labs, consulting firms',
+                resources: resourcesDatabase['ai-ml']
+            },
+            'mobile': {
+                title: 'Mobile Developer',
+                icon: '📱',
+                description: 'Mobile developers create apps for smartphones and tablets that billions of people use daily. You\'ll build native or cross-platform applications that solve real problems and provide engaging user experiences.',
+                whatYouWillDo: [
+                    'Design and develop mobile applications',
+                    'Optimize apps for performance and battery life',
+                    'Implement user interfaces for touch-based interaction',
+                    'Integrate with APIs and backend services',
+                    'Test apps across different devices and OS versions',
+                    'Publish and maintain apps in app stores'
+                ],
+                technicalSkills: [
+                    'Flutter/React Native - Cross-platform development frameworks',
+                    'Mobile UI/UX - Touch-optimized interface design',
+                    'API Integration - Connecting to backend services',
+                    'Database Management - Local data storage (SQLite, Core Data)',
+                    'App Store Guidelines - Publishing requirements for iOS/Android',
+                    'Testing - Unit testing and device testing',
+                    'Version Control - Git for collaborative development',
+                    'Performance Optimization - Memory and battery management'
+                ],
+                softSkills: [
+                    'User Focus - Designing for mobile-first experiences',
+                    'Adaptability - Working with different screen sizes and devices',
+                    'Innovation - Creating unique mobile interactions',
+                    'Attention to Detail - Ensuring smooth user experiences',
+                    'Problem-Solving - Debugging across different devices',
+                    'Market Awareness - Understanding mobile app trends'
+                ],
+                careerPath: [
+                    { phase: 'Months 1-2', focus: 'Mobile development fundamentals and setup' },
+                    { phase: 'Months 3-5', focus: 'Building first apps with Flutter/React Native' },
+                    { phase: 'Months 6-8', focus: 'Advanced features and API integration' },
+                    { phase: 'Months 9-12', focus: 'Portfolio apps and app store publishing' }
+                ],
+                salaryRange: '$55,000 - $125,000 annually (varies by platform expertise)',
+                jobOutlook: 'Very Good - Mobile usage continues growing globally',
+                workEnvironment: 'Tech companies, agencies, freelance, startup scene',
+                resources: resourcesDatabase['mobile']
+            },
+            'cyber': {
+                title: 'Cybersecurity Specialist',
+                icon: '🔒',
+                description: 'Cybersecurity specialists protect organizations from digital threats and cyber attacks. You\'ll be the guardian of digital assets, implementing security measures and responding to security incidents.',
+                whatYouWillDo: [
+                    'Monitor networks and systems for security threats',
+                    'Implement security controls and best practices',
+                    'Respond to security incidents and breaches',
+                    'Conduct vulnerability assessments and penetration testing',
+                    'Develop security policies and procedures',
+                    'Train employees on security awareness'
+                ],
+                technicalSkills: [
+                    'Network Security - Firewalls, VPNs, and network monitoring',
+                    'Ethical Hacking - Penetration testing and vulnerability assessment',
+                    'Security Tools - SIEM, antivirus, and security scanners',
+                    'Risk Assessment - Identifying and evaluating security risks',
+                    'Incident Response - Handling security breaches and attacks',
+                    'Compliance - Understanding regulations like GDPR, HIPAA',
+                    'Cryptography - Encryption and secure communication',
+                    'Security Architecture - Designing secure systems'
+                ],
+                softSkills: [
+                    'Vigilance - Staying alert to emerging threats',
+                    'Ethics - Understanding the moral implications of security work',
+                    'Stress Management - Handling high-pressure security incidents',
+                    'Communication - Explaining security risks to management',
+                    'Continuous Learning - Keeping up with evolving threats',
+                    'Critical Thinking - Analyzing potential attack vectors'
+                ],
+                careerPath: [
+                    { phase: 'Months 1-3', focus: 'Security fundamentals and networking basics' },
+                    { phase: 'Months 4-8', focus: 'Security tools and incident response' },
+                    { phase: 'Months 9-12', focus: 'Ethical hacking and penetration testing' },
+                    { phase: 'Months 13-14', focus: 'Specialized certifications and job preparation' }
+                ],
+                salaryRange: '$60,000 - $130,000 annually (high demand, growing field)',
+                jobOutlook: 'Exceptional - Cybersecurity jobs growing 33% through 2030',
+                workEnvironment: 'Government agencies, financial institutions, healthcare, consulting',
+                resources: resourcesDatabase['cyber']
+            }
+        };
+
+        // Function to show career path details
+        function showPathDetails(pathId) {
+            const pathData = careerPathDetails[pathId];
+            if (!pathData) return;
+
+            const modal = document.getElementById('pathDetailsModal');
+            const container = document.getElementById('pathDetailsContainer');
+
+            container.innerHTML = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 64px; margin-bottom: 15px;">${pathData.icon}</div>
+                    <h1 style="color: var(--primary); font-size: 36px; margin-bottom: 10px;">${pathData.title}</h1>
+                    <p style="font-size: 18px; color: var(--text-light); line-height: 1.6;">${pathData.description}</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                    <div style="background: var(--bg-light); padding: 25px; border-radius: 16px;">
+                        <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 20px;">📋 What You'll Do</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            ${pathData.whatYouWillDo.map(item => `
+                                <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                                    ${item}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div style="background: var(--bg-light); padding: 25px; border-radius: 16px;">
+                        <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 20px;">💰 Career Outlook</h3>
+                        <div style="margin-bottom: 15px;">
+                            <strong>Salary Range:</strong><br>
+                            <span style="color: var(--text-dark);">${pathData.salaryRange}</span>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>Job Outlook:</strong><br>
+                            <span style="color: var(--text-dark);">${pathData.jobOutlook}</span>
+                        </div>
+                        <div>
+                            <strong>Work Environment:</strong><br>
+                            <span style="color: var(--text-dark);">${pathData.workEnvironment}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 24px; text-align: center;">🛠️ Technical Skills You'll Master</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
+                        ${pathData.technicalSkills.map(skill => `
+                            <div style="background: var(--white); padding: 12px 15px; border-radius: 8px; border-left: 3px solid var(--primary); display: flex; flex-direction: column;">
+                                <strong style="color: var(--primary); font-size: 14px; margin-bottom: 4px;">${skill.split(' - ')[0]}</strong>
+                                ${skill.includes(' - ') ? `<span style="color: var(--text-light); font-size: 12px; line-height: 1.3;">${skill.split(' - ')[1]}</span>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 24px; text-align: center;">💪 Soft Skills You'll Develop</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
+                        ${pathData.softSkills.map(skill => `
+                            <div style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); color: white; padding: 12px 15px; border-radius: 8px; display: flex; flex-direction: column;">
+                                <strong style="font-size: 14px; margin-bottom: 4px;">${skill.split(' - ')[0]}</strong>
+                                ${skill.includes(' - ') ? `<span style="opacity: 0.9; font-size: 12px; line-height: 1.3;">${skill.split(' - ')[1]}</span>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 30px; border-radius: 16px; margin-bottom: 30px;">
+                    <h3 style="margin-bottom: 20px; font-size: 24px; text-align: center;">🗓️ Your Learning Journey</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        ${pathData.careerPath.map((phase, index) => `
+                            <div style="text-align: center;">
+                                <div style="background: var(--secondary); color: var(--primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700;">
+                                    ${index + 1}
+                                </div>
+                                <div style="font-weight: 600; margin-bottom: 8px;">${phase.phase}</div>
+                                <div style="font-size: 14px; opacity: 0.9;">${phase.focus}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 24px;">🚀 Ready to Start?</h3>
+                    <p style="margin-bottom: 20px; color: var(--text-light);">Take our quiz to get a personalized learning path with curated resources.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn-primary btn-large" onclick="closePathDetailsModal(); showQuiz();">
+                            Take Career Quiz
+                        </button>
+                        <button class="btn-secondary" onclick="closePathDetailsModal(); showCoaches();">
+                            Get Career Coaching
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.style.display = 'block';
+        }
+
+        // Function to close career path details modal
+        function closePathDetailsModal() {
+            document.getElementById('pathDetailsModal').style.display = 'none';
+        }
+
+        // Update the openPath function to show details instead of quiz results
+        function openPath(pathId) {
+            showPathDetails(pathId);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const quizModal = document.getElementById('quizModal');
+            const coachesModal = document.getElementById('coachesModal');
+            const pathDetailsModal = document.getElementById('pathDetailsModal');
+            if (event.target == quizModal) {
+                closeModal();
+            }
+            if (event.target == coachesModal) {
+                closeCoachesModal();
+            }
+            if (event.target == pathDetailsModal) {
+                closePathDetailsModal();
+            }
+        }
+    </script>
+</body>
+</html>
